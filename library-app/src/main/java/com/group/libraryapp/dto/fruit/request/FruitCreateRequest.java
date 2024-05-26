@@ -18,6 +18,12 @@ public class FruitCreateRequest {
         this.status = status;
     }
 
+    public FruitCreateRequest(String name, long price, LocalDate warehousingDate) {
+        this.name = name;
+        this.warehousingDate = warehousingDate;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }

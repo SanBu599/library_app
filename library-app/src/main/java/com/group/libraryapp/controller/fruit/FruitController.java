@@ -1,9 +1,13 @@
 package com.group.libraryapp.controller.fruit;
 
+import com.group.libraryapp.dto.fruit.request.FruitCountRequest;
 import com.group.libraryapp.dto.fruit.request.FruitCreateRequest;
+import com.group.libraryapp.dto.fruit.request.FruitListRequest;
 import com.group.libraryapp.dto.fruit.request.FruitStatusResponse;
 import com.group.libraryapp.service.Fruit.FruitService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class FruitController {
@@ -28,5 +32,15 @@ public class FruitController {
         long salesAmount = service.getFruitStatus(name);
         long notSalesAmount = service.getNotFruitStause(name);
         return new FruitStatusResponse(salesAmount,notSalesAmount);
+    }
+
+    @GetMapping("api/v1/fruit/count")
+    public FruitCountRequest fruitCount(@RequestParam String name){
+        return service.count(name);
+    }
+
+    @GetMapping("api/v1/fruit/list")
+    public List<FruitListRequest> fruitList(@RequestParam String option, @RequestParam long price){
+        return service.getFruitList(option,price);
     }
 }

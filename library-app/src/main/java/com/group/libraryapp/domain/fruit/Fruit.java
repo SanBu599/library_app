@@ -15,6 +15,7 @@ public class Fruit {
     private LocalDate warehousing_date;
     private long price;
 
+    @Column(columnDefinition = "varchar(10) CHECK (status IN ('SOLD', 'NOT_SOLD'))")
     private String status;
 
     protected Fruit(){}
